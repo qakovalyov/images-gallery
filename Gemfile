@@ -8,16 +8,22 @@ gem 'faker'
 gem 'pg'
 
 gem 'jbuilder'
+gem 'slim-rails'
+gem 'jquery-rails'
 
-group :assets do
-  gem 'sass-rails'
-  gem 'uglifier'
-  gem 'coffee-rails'
-  gem 'jquery-rails'
-  gem 'slim-rails'
-end
+gem 'sass-rails'
+gem 'compass-rails', '~> 2.0.alpha.0'
+gem 'bootstrap-sass'
+gem 'font-awesome-sass'
+gem 'coffee-rails'
 
+gem 'turbolinks'
+gem 'uglifier'
+
+
+gem 'simple_form'
 
 group :development do
   gem 'pry'
+  gem 'letter_opener'
 end

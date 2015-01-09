@@ -1,0 +1,9 @@
+@import "variables";
+a { @extend .pointer }
+header { border-bottom: 1px solid #eee }
+
+footer { height: map-get($height, footer); line-height: map-get($height, footer) }
+@include sticky-footer( map-get($height, footer), $root-selector, $root-footer-selector, $footer-selector);
+
+
+

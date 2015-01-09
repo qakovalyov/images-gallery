@@ -1,12 +1,35 @@
 doctype html
 html
 head
-  title Cats Gallery
+  title = full_title(yield(:title))
   = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
 body
-  span.notice = notice
-  span.alert = alert
+  #root
+    header
+      .row
+        .col-sm-12
+          ul.nav.nav-pills.pull-right
+            - if user_signed_in?
+              li: a Signed in as&nbsp; #{current_user.email}
+              li
+                = link_to 'Sign out', destroy_user_session_path, method: :delete
+            - else
+              li
+                = link_to 'Sign up', new_user_registration_path
+              li
+                = link_to 'Sign in', new_user_session_path
+    main
+      .row
+        .col-md-6.col-md-offset-3
+          - if notice.present?
+            .alert.alert-warning = notice
+          - if alert.present?
+            .alert.alert-danger = alert
+        .col-md-12
+          == yield
+  footer
+    .row: .col-md-12.text-center
+      | Copyright © #{Time.now.year} by Rudolf Kovalyov
 
-  == yield
