@@ -5,11 +5,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :profile, class_name: 'UserProfile', dependent: :destroy, autosave: true
-  accepts_nested_attributes_for :profile
-  validates_presence_of :first_name, :last_name
-
+  validates_presence_of :first_name, :last_name, :email
 
   after_create :create_dependencies
+
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 
   private
 

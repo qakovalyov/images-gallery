@@ -9,17 +9,21 @@ body
   #root
     header
       .row
-        .col-sm-12
+        .col-md-2.col-md-offset-1
+          .logo
+            = link_to image_tag('delivery-512.png'), root_url
+        .col-md-8
           ul.nav.nav-pills.pull-right
             - if user_signed_in?
-              li: a Signed in as&nbsp; #{current_user.email}
-              li
-                = link_to 'Sign out', destroy_user_session_path, method: :delete
+              li = link_to 'My Gallery'
+              li.profile
+                = image_tag current_user.profile.avatar_url, class: 'avatar'
+                = active_link_to 'Profile', user_profile_path(current_user.profile)
+              li = link_to 'Sign out', destroy_user_session_path, method: :delete
+
             - else
-              li
-                = link_to 'Sign up', new_user_registration_path
-              li
-                = link_to 'Sign in', new_user_session_path
+              li = active_link_to 'Sign up', new_user_registration_path
+              li = active_link_to 'Sign in', new_user_session_path
     main
       .row
         .col-md-6.col-md-offset-3
@@ -27,9 +31,9 @@ body
             .alert.alert-success = notice
           - if alert.present?
             .alert.alert-danger = alert
+      .row
         .col-md-12
           == yield
   footer
     .row: .col-md-12.text-center
       | Copyright © #{Time.now.year} by Rudolf Kovalyov
-

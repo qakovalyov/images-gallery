@@ -1,0 +1,25 @@
+- provide(:title, 'Edit Profile')
+#user-profile
+  .row
+    .col-md-8.col-md-offset-2
+      = simple_form_for current_user, url: user_profile_path(current_user.profile), method: 'put' do |f|
+        .row
+          .col-md-4.text-center
+            .avatar
+              img[src="#{current_user.profile.avatar_url}"]
+            .div
+              = f.simple_fields_for :profile, current_user.profile do |p|
+                = p.file_field :avatar, accept: 'image/*', label:false
+            .nav-links
+          .col-md-8
+            .form-group
+              | Email:  <em>#{current_user.email}</em>
+            = f.input :first_name
+            = f.input :last_name
+            .form-group
+              .row
+                .col-md-4
+                  = link_to 'Cancel', user_profile_path, class: 'btn btn-default btn-block'
+                .col-md-8
+                  = f.submit 'Save', class: 'btn btn-primary btn-block'
+

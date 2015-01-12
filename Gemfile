@@ -22,6 +22,11 @@ gem 'uglifier'
 
 
 gem 'simple_form'
+gem 'active_link_to'
+
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
 
 group :development do
   gem 'pry'
