@@ -5,7 +5,7 @@
       .row
         .col-md-4.text-center
           .avatar
-            img[src="#{@user.profile.avatar_url}"]
+            = image_tag current_user.profile.avatar_url, class: 'avatar'
 
           .nav-links
             big = link_to 'Edit', edit_user_profile_path

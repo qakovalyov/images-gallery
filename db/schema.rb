@@ -59,7 +59,10 @@ ActiveRecord::Schema.define(version: 20150112002903) do
     t.string   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "user_profiles", ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -78,9 +81,9 @@ ActiveRecord::Schema.define(version: 20150112002903) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "profile_id"
     t.string   "first_name"
     t.string   "last_name"
+    t.integer  "profile_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

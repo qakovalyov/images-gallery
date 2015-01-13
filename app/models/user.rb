@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
 
   def create_dependencies
     self.profile = UserProfile.create
+    self.profile.user = self
     self.save
   end
 

@@ -6,7 +6,7 @@
         .row
           .col-md-4.text-center
             .avatar
-              img[src="#{current_user.profile.avatar_url}"]
+              = image_tag current_user.profile.avatar_url, class: 'avatar'
             .div
               = f.simple_fields_for :profile, current_user.profile do |p|
                 = p.file_field :avatar, accept: 'image/*', label:false

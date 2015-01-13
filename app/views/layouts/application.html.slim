@@ -6,7 +6,7 @@ head
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
 body
-  #root
+  .page-wrap
     header
       .row
         .col-md-2.col-md-offset-1
@@ -18,12 +18,12 @@ body
               li = link_to 'My Gallery'
               li.profile
                 = image_tag current_user.profile.avatar_url, class: 'avatar'
-                = active_link_to 'Profile', user_profile_path(current_user.profile)
+                = active_link_to 'Profile', user_profile_path(current_user)
               li = link_to 'Sign out', destroy_user_session_path, method: :delete
 
             - else
               li = active_link_to 'Sign up', new_user_registration_path
-              li = active_link_to 'Sign in', new_user_session_path
+              li = active_link_to 'Login', new_user_session_path
     main
       .row
         .col-md-6.col-md-offset-3
