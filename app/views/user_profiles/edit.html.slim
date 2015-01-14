@@ -5,8 +5,8 @@
       = simple_form_for current_user, url: user_profile_path(current_user.profile), method: 'put' do |f|
         .row
           .col-md-4.text-center
-            .avatar
-              = image_tag current_user.profile.avatar_url, class: 'avatar'
+            .avatar.js-preview.js-resize
+              = image_tag current_user.profile.avatar_url
             .div
               = f.simple_fields_for :profile, current_user.profile do |p|
                 = p.file_field :avatar, accept: 'image/*', label:false
