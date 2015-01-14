@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users , controllers:  { registrations: 'registrations' }
+
   use_doorkeeper
 
 
@@ -7,9 +8,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
 
-  get 'persons/profile', as: 'user_root'
+  root 'home#index'
+  resources :user_profiles
 
 
   # Example of regular route:
