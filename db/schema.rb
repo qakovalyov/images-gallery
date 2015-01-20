@@ -11,10 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112002903) do
+ActiveRecord::Schema.define(version: 20150120110507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "galleries", force: true do |t|
+    t.integer "user_id"
+  end
 
   create_table "oauth_access_grants", force: true do |t|
     t.integer  "resource_owner_id", null: false
@@ -55,6 +59,14 @@ ActiveRecord::Schema.define(version: 20150112002903) do
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
+  create_table "pictures", force: true do |t|
+    t.integer  "gallery_id"
+    t.string   "name"
+    t.string   "hashtags"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_profiles", force: true do |t|
     t.string   "avatar"
     t.datetime "created_at"
@@ -81,13 +93,15 @@ ActiveRecord::Schema.define(version: 20150112002903) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "profile_id"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "profile_id"
+    t.integer  "gallery_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["gallery_id"], name: "index_users_on_gallery_id", using: :btree
   add_index "users", ["profile_id"], name: "index_users_on_profile_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 

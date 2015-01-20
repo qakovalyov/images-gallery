@@ -16,9 +16,7 @@ body
           ul.nav.nav-pills.pull-right
             - if user_signed_in?
               li = link_to 'My Gallery'
-              li.profile
-                = image_tag current_user.profile.avatar_url, class: 'avatar'
-                = active_link_to 'Profile', user_profile_path(current_user)
+              li.profile = active_link_to image_tag(current_user.profile.avatar_url) + '   Profile', user_profile_path(current_user)
               li = link_to 'Sign out', destroy_user_session_path, method: :delete
 
             - else
@@ -36,4 +34,4 @@ body
           == yield
   footer
     .row: .col-md-12.text-center
-      | Copyright © #{Time.now.year} by Rudolf Kovalyov
+      | Copyright © #{Time.now.year} Rudolf Kovalyov

@@ -19,13 +19,7 @@ class UserProfile < ActiveRecord::Base
     uri = URI.parse(gravatar_check)
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Get.new(uri.request_uri)
-    response = http.request(request)
-    if response.code.to_i == 404 || response.code.to_i == 400
-      'users/no_photo.png'
-    else
-      "#{gravatar_url}?s=150"
-    end
+    response_code = http.request(request).code.to_i
+    response_code == 404 ? 'users/no_photo.png' : "#{gravatar_url}?s=150"
   end
-
-
 end

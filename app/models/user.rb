@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :profile, class_name: 'UserProfile', dependent: :destroy, autosave: true
+  belongs_to :gallery
   validates_presence_of :first_name, :last_name, :email
 
   after_create :create_dependencies
@@ -19,6 +20,9 @@ class User < ActiveRecord::Base
   def create_dependencies
     self.profile = UserProfile.create
     self.profile.user = self
+    self.gallery = Gallery.create
+    self.gallery.user = self
+    self.gallery.save
     self.save
   end
 
