@@ -1,0 +1,21 @@
+- provide(:title, 'My Gallery')
+#pictures
+  .row
+    .col-md-10.col-md-offset-1
+      h1.text-center
+        | Pictures
+        span.small = link_to ' [+]', new_picture_path
+      - if @pictures.empty?
+        .text-center
+          | You haven't pictures. #{link_to 'New Picture', new_picture_path}
+      - else
+        .images
+          - @pictures.each do |picture|
+            .item.thumbnail
+              = image_tag picture.image.url
+              .caption
+                div = picture.name
+                = link_to 'Edit ', edit_picture_path(picture)
+                = link_to 'Destroy', picture_path(picture), data: {:confirm => 'Are you sure?'}, :method => :delete
+
+

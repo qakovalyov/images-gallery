@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :profile, class_name: 'UserProfile', dependent: :destroy, autosave: true
-  belongs_to :gallery
+  belongs_to :gallery, dependent: :destroy
+  has_many :pictures, through: :gallery
+
   validates_presence_of :first_name, :last_name, :email
 
   after_create :create_dependencies
