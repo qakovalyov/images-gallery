@@ -1,0 +1,8 @@
+- provide(:title, 'Edit Picture')
+#picture-edit
+  .row
+    .col-md-6.col-md-offset-3
+      h1.text-center Editing picture
+      == render 'form'
+      = link_to 'Back', pictures_path
+
