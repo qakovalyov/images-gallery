@@ -18,10 +18,11 @@
         .thumbnails.images
           - @pictures.each do |picture|
             .item
+              a.lightbox-link href="#{picture.image.url}" data-toggle="lightbox" data-title="#{picture.name}" data-gallery="multiimages" data-parent='.images'
               .image-wrap
                 = image_tag picture.image.url
               .caption
                 .ellipsis: b = picture.name
                 - unless picture.hashtags.empty?
                   - picture.get_hashtags_array.each do |hashtag|
-                    = link_to hashtag, root_path(search: hashtag)
+                    = link_to hashtag, root_path(search: hashtag), class: 'hashtag-link'

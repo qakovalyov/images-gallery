@@ -12,6 +12,7 @@
         .thumbnails.images
           - @pictures.each do |picture|
             .item
+              a.lightbox-link href="#{picture.image.url}" data-toggle="lightbox" data-title="#{picture.name}" data-gallery="multiimages" data-parent='.images'
               .image-wrap
                 = image_tag picture.image.url
               .caption
