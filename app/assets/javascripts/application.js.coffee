@@ -12,6 +12,8 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require bootstrap
+#= require ekko-lightbox
 #= require turbolinks
 #= require_tree .
 
