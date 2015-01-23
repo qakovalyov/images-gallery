@@ -1,4 +1,7 @@
-$(document).delegate '*[data-toggle="lightbox"]', 'click', (e)->
-  e.preventDefault()
-  $(this).ekkoLightbox()
+jQuery ->
+  $('.thumbnails').on 'click', '.lightbox-link', (e)->
+    e.preventDefault();
+    $(this).ekkoLightbox()
+
+
 
