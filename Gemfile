@@ -14,7 +14,7 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'compass-rails', '~> 2.0.alpha.0'
 gem 'bootstrap-sass'
-gem 'font-awesome-sass'
+gem 'font-awesome-rails'
 gem 'coffee-rails'
 
 gem 'turbolinks'
@@ -31,4 +31,5 @@ gem 'fog'
 group :development do
   gem 'pry'
   gem 'letter_opener'
+  gem 'rails-erd'
 end
