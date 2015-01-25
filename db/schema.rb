@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122120440) do
+ActiveRecord::Schema.define(version: 20150125025845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "galleries", force: true do |t|
-    t.integer "user_id"
+    t.integer "owner_id"
   end
 
   create_table "oauth_access_grants", force: true do |t|
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20150122120440) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "gallery_id"
+    t.integer  "roles_mask"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

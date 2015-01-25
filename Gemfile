@@ -32,6 +32,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 
+gem 'cancancan'
+
 group :development do
   gem 'pry'
   gem 'letter_opener'
