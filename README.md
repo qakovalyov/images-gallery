@@ -1,24 +1,26 @@
-# Rails Images-gallery
+# Welcome Rails Images-Gallery
 
 ## Installation:
 
-``` install rvm
-    install ruby, '->2.1.5'
-    rvm use ruby-2.1.5@images-gallery
-    bundle
-    run postgresql server
-    rake db:drop db:create db:migrate db:seed
-    rails s
-```
+Make sure following software is installed:
 
-* How to use `git-flow`:
+`install rvm`
+`install ruby, '->2.1.5'`
+`brew install imagemagick`
+`brew install postgres`
+`install http://postgresapp.com/ and run postgres server`
 
+Run command console:
+
+`rvm use ruby-2.1.5@images-gallery`
+`bundle install`
+
+`rake db:drop db:create db:migrate db:seed`
+`rails s`
+
+* We are use `git-flow`:
     http://danielkummer.github.io/git-flow-cheatsheet/
 
-## Database:
+## License
 
-- Postgresql
-
-
-## Deployment instructions
-...
+    Images-Gallery is provided as is, without any responsibility
