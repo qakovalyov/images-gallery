@@ -26,3 +26,10 @@
                 - unless picture.hashtags.empty?
                   - picture.get_hashtags_array.each do |hashtag|
                     = link_to hashtag, root_path(search: hashtag), class: 'hashtag-link'
+              - if can? :update, picture
+                .control
+                  = link_to fa_icon('edit'), edit_picture_path(picture)
+                  = link_to fa_icon('remove'), picture_path(picture),
+                            class: 'delete',
+                            data: {confirm: 'Are you sure?'},
+                            method: :delete
