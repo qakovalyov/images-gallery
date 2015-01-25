@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   def index
     if params[:search]
       search_string = params[:search].downcase
-      hashtags = search_string.scan(/#\w+/)
+      hashtags = search_string.scan(/#\S+/)
       unless hashtags.empty?
         search_string = hashtags.join(' ').gsub('#', '')
         @pictures = Picture.search_by_hashtags(search_string).order('hashtags ASC')
