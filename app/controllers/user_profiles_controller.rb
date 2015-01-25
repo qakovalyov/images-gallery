@@ -14,7 +14,7 @@ class UserProfilesController < ApplicationController
       @user.profile.attributes = update_params_profile
     end
     if @user.save
-      redirect_to user_profile_path(user)
+      redirect_to user_profile_path(@user.profile)
     end
   end
 
