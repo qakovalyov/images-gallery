@@ -1,0 +1,28 @@
+- provide(:title, 'My Gallery')
+#pictures
+  .row
+    .col-md-10.col-md-offset-1
+      h1.text-center
+        | My Pictures
+        span.small = link_to ' [+]', new_picture_path
+      - if @pictures.empty?
+        .text-center
+          | You haven't pictures. #{link_to 'New Picture', new_picture_path}
+      - else
+        .thumbnails.images
+          - @pictures.each do |picture|
+            .item
+              a.lightbox-link href="#{picture.image.url}" data-toggle="lightbox" data-title="#{picture.name}" data-gallery="multiimages" data-parent='.images'
+              .image-wrap
+                = image_tag picture.image.url
+              .caption
+                .ellipsis: b = picture.name
+                - unless picture.hashtags.empty?
+                  - picture.get_hashtags_array.each do |hashtag|
+                    = link_to hashtag, root_path(search: hashtag), class: 'hashtag-link'
+                .control
+                  = link_to fa_icon('edit'), edit_picture_path(picture)
+                  = link_to fa_icon('remove'), picture_path(picture),
+                            class: 'delete',
+                            data: {confirm: 'Are you sure?'},
+                            method: :delete

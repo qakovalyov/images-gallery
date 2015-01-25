@@ -1,0 +1,15 @@
+- provide(:title, 'Profile')
+#user-profile
+  .row
+    .col-md-8.col-md-offset-2
+      .row
+        .col-md-4.text-center
+          .avatar
+            = image_tag @user.profile.avatar_url
+
+          .nav-links
+            - if can? :update, @user.profile
+              big = link_to 'Edit', edit_user_profile_path
+        .col-md-8
+          h4 = @user.full_name
+          em = @user.email

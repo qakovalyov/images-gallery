@@ -1,0 +1,46 @@
+.pointer { cursor: pointer }
+.ellipsis { @include ellipsis }
+
+.v-center {
+  display:table;
+  height: 100%;
+  &>div {
+    display: table-cell;
+    vertical-align:middle;
+  }
+}
+
+.thumbnails {
+  &.images {
+    @extend .text-center;
+    @extend .clearfix;
+    .item {
+      position: relative;
+      width: 220px; height: 300px;
+      float: left;
+      margin: 5px;
+      .lightbox-link {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+      }
+      .image-wrap {
+        height: 220px;
+        overflow: hidden;
+        border-bottom: 1px solid #cacaca;
+        img {width: 100%; border-radius: 5px;}
+      }
+      .hashtag-link { position: relative; z-index: 1 }
+      .control {
+        position: absolute;
+        top: -12px; right: -4px;
+        font-size: 20px;
+        .delete {
+          color: $brand-danger;
+        }
+      }
+
+    }
+  }
+  .item { @extend .thumbnail }
+}

@@ -1,0 +1,28 @@
+- provide(:title, 'All Pictures')
+#pictures
+  .row
+    .col-md-10.col-md-offset-1
+      h1.text-center
+        | All Pictures
+      - if @pictures.empty?
+        .text-center
+          | Pictures haven't uploaded yet. #{link_to 'Add new Picture', new_picture_path}
+      - else
+        = simple_form_for(root_path, method: :get) do
+          .form-group
+            = text_field_tag :search, params[:search],
+                             autofocus: true,
+                             placeholder: 'Search Picture by name or #tagname',
+                             class: 'form-control'
+            = submit_tag 'Search', name: nil, class: 'hidden'
+        .thumbnails.images
+          - @pictures.each do |picture|
+            .item
+              a.lightbox-link href="#{picture.image.url}" data-toggle="lightbox" data-title="#{picture.name}" data-gallery="multiimages" data-parent='.images'
+              .image-wrap
+                = image_tag picture.image.url
+              .caption
+                .ellipsis: b = picture.name
+                - unless picture.hashtags.empty?
+                  - picture.get_hashtags_array.each do |hashtag|
+                    = link_to hashtag, root_path(search: hashtag), class: 'hashtag-link'

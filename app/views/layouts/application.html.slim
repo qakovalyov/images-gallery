@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    title = full_title(yield(:title))
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = favicon_link_tag '/images/delivery-512.png'
+  body
+    .page-wrap
+      header
+        .container
+          .row
+            .col-md-2.col-md-offset-1.col-sm-2.col-sm-offset-1.col-xs-2
+              .logo
+                = link_to image_tag('delivery-512.png'), root_url
+            .col-md-8.col-sm-8.col-xs-10
+              ul.nav.nav-pills.pull-right
+                - if user_signed_in?
+                  li = link_to 'My Gallery', pictures_path
+                  li.profile = active_link_to image_tag(current_user.profile.avatar_url) + '   Profile', user_profile_path(current_user.profile)
+                  li = link_to 'Sign out', destroy_user_session_path, method: :delete
+
+                - else
+                  li = active_link_to 'Sign up', new_user_registration_path
+                  li = active_link_to 'Login', new_user_session_path
+      main
+        .container
+          .row
+            .col-md-6.col-md-offset-3
+              - if notice.present?
+                .alert.alert-success = notice
+              - if alert.present?
+                .alert.alert-danger = alert
+          .row
+            .col-md-12
+              == yield
+    footer
+      .row: .col-md-12.text-center
+        | Copyright © #{Time.now.year} Rudolf Kovalyov

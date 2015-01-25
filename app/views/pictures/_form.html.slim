@@ -1,0 +1,9 @@
+= simple_form_for(@picture) do |f|
+  /= f.error_notification
+  .image-wrap.js-preview.text-center
+    = image_tag @picture.image_ur
+  = f.file_field :image, accept: 'image/*', label:false
+  = f.input :name
+  = f.input :hashtags, label: 'Hashtags ( separated by a space )'
+  .form-group
+    = f.button :submit, class: 'btn btn-primary btn-block'
