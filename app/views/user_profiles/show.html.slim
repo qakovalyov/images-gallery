@@ -1,11 +1,11 @@
-- provide(:title, 'User Profile')
+- provide(:title, 'Profile')
 #user-profile
   .row
     .col-md-8.col-md-offset-2
       .row
         .col-md-4.text-center
           .avatar
-            = image_tag current_user.profile.avatar_url
+            = image_tag @user.profile.avatar_url
 
           .nav-links
             - if can? :update, @user.profile

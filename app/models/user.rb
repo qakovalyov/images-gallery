@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
     self.gallery = Gallery.create
     self.gallery.owner = self
     self.gallery.save
+    self.skip_reconfirmation! #fixed 'first Devise Confirmation invalid on first send'
     self.save
   end
 

@@ -12,6 +12,7 @@ class Ability
         can :manage, UserProfile do |profile|
           profile.try(:user) == user
         end
+        can :create, Picture
         can :manage, Picture do |picture|
           picture.gallery.try(:owner) == user
         end

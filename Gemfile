@@ -17,7 +17,6 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'coffee-rails'
 
-
 source 'https://rails-assets.org' do
   gem 'rails-assets-ashleydw--lightbox'
 end

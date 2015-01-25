@@ -1,6 +1,6 @@
 class UserProfilesController < ApplicationController
-  before_action :set_user,  only: [:show, :edit, :update]
   load_and_authorize_resource
+  before_action :set_user,  only: [:show, :edit, :update]
 
   def show
   end
@@ -38,6 +38,6 @@ class UserProfilesController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = @user_profile.user
   end
 end
