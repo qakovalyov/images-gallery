@@ -82,7 +82,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       :address              => 'smtp.gmail.com',
       :port                 => 587,
-      :domain               => 'cats',
+      :domain               => 'cats-gallery.herokuapp.com',
       :user_name            => 'cats.images.gallery@gmail.com',
       :password             => 'catsimagesgallery123123',
       :authentication       => 'plain',

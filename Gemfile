@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.5'
 
 gem 'rails', '4.1.8'
 gem 'devise'
@@ -38,4 +39,8 @@ group :development do
   gem 'pry'
   gem 'letter_opener'
   gem 'rails-erd'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
