@@ -1,19 +1,20 @@
 class UserProfilesController < ApplicationController
+  before_action :set_user,  only: [:show, :edit, :update]
+  load_and_authorize_resource
 
   def show
-    @user = User.find(params[:id])
+  end
+
+  def edit
   end
 
   def update
-    user = User.find(params[:id])
-    if user && user == current_user
-      user.attributes = update_params_user
-      if params[:user][:profile].present?
-        user.profile.attributes = update_params_profile
-      end
-      if user.save
-        redirect_to user_profile_path(user)
-      end
+    @user.attributes = update_params_user
+    if params[:user][:profile].present?
+      @user.profile.attributes = update_params_profile
+    end
+    if @user.save
+      redirect_to user_profile_path(user)
     end
   end
 
@@ -32,5 +33,11 @@ class UserProfilesController < ApplicationController
         :avatar
       )
     end
+  end
+
+  private
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end

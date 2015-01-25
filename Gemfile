@@ -17,6 +17,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'coffee-rails'
 
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-ashleydw--lightbox'
 end
@@ -31,6 +32,8 @@ gem 'active_link_to'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
+
+gem 'cancancan'
 
 group :development do
   gem 'pry'

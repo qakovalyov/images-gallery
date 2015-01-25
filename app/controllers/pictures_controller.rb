@@ -1,6 +1,5 @@
 class PicturesController < ApplicationController
-  before_action :set_picture,  only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
 
   # GET /pictures
   # GET /pictures.json
@@ -64,11 +63,6 @@ class PicturesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_picture
-      @picture = Picture.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
       params.require(:picture).permit(
