@@ -2,5 +2,5 @@ bindChangeImage = () ->
   $("input[type='file']").on 'change', (e) ->
     previewImg(@)
 
-jQuery ->
+$(document).on 'page:load', ->
   bindChangeImage()
